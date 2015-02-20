@@ -18,7 +18,7 @@ subjectTrain <- read.table("UCI HAR Dataset/train/subject_train.txt", header = F
 # combine the test and train data sets (like a SQL union query)
 results <- rbind(testResults, trainResults)
 # name the columns in the combined data set
-colnames(results) <- features[,2]
+colnames(results) <- paste("AvgOf", features[,2], sep = "-")
 # append test and train subject ID's to the results sets
 subject <- rbind(subjectTest, subjectTrain)
 results[,"subjectID"] <- subject
@@ -41,10 +41,11 @@ aveStdDtl <- merge(activities, aveStdDtl, by.x = "activityID", by.y = "activityI
 
 
 # 040. Appropriately labels the data set with descriptive variable names. 
-# see names(results) <- features[,2] command above for initial naming
+# see the colnames(results) <- paste("AvgOf", features[,2], sep = "-") command above for descriptive column naming
 
 
 # 050. From data set in step 4, create second, indepedent tidy
 # data set with the averages of each variable for each activity and each subject
 by_activitySum <- group_by(aveStdDtl, activity, subjectID) %>% summarise_each(funs(mean), matches("mean()"), matches("std()"))
-View(by_activitySum)
+#View(by_activitySum)
+write.csv(by_activitySum, file="tidy.csv")
