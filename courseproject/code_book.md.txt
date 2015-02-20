@@ -1,5 +1,0 @@
-## This file describes the various data sets used and 
-## manipulated by the run_analysis.R script
-## written by Travis Fell in Feb. 2015 for the 
-## Coursera "Getting and Cleaning Data" course
-
