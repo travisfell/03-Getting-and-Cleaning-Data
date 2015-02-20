@@ -48,4 +48,4 @@ aveStdDtl <- merge(activities, aveStdDtl, by.x = "activityID", by.y = "activityI
 # data set with the averages of each variable for each activity and each subject
 by_activitySum <- group_by(aveStdDtl, activity, subjectID) %>% summarise_each(funs(mean), matches("mean()"), matches("std()"))
 #View(by_activitySum)
-write.csv(by_activitySum, file="tidy.csv")
+write.table(by_activitySum, file="tidy.txt", sep ="\t", row.name = FALSE)

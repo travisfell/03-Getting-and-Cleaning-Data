@@ -45,7 +45,7 @@ This section gives an overview of how the run_analysis.R script pulls in and res
 ### Average each variable by each unique combination of activity and subject
 1. Group the average/stdev data set by activity and subjectID. 
 2. Average each field with "mean" or "std" in the column name. 
-3. Write the final result to a .csv in the same working directory. 
+3. Write the final result to a .txt in the same working directory. 
 
 
 ## Variables
