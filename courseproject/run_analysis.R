@@ -46,6 +46,6 @@ aveStdDtl <- merge(activities, aveStdDtl, by.x = "activityID", by.y = "activityI
 
 # 050. From data set in step 4, create second, indepedent tidy
 # data set with the averages of each variable for each activity and each subject
-by_activitySum <- group_by(aveStdDtl, activity, subjectID) %>% summarise_each(funs(mean), matches("mean()"), matches("std()"))
-#View(by_activitySum)
+by_activitySum <- group_by(aveStdDtl, activity, subjectID) %>% summarise_each(funs(mean), matches("mean", matches("std()")))
+View(by_activitySum)
 write.table(by_activitySum, file="tidy.txt", sep ="\t", row.name = FALSE)
